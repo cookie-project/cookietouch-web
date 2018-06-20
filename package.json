@@ -31,6 +31,7 @@
     "lint": "tslint-config-prettier-check ./tslint.json"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.4",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.3.4",
     "@types/react": "^16.4.0",

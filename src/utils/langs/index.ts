@@ -1,4 +1,3 @@
-// tslint:disable-next-line
 import fr from "./fr.json";
 
 export enum Languages {

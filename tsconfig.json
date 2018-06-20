@@ -19,6 +19,7 @@
     "noUnusedLocals": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": [ "./src/*" ],
       "@components/*": [ "./src/components/*" ],
