@@ -11,7 +11,6 @@ const AuthContext = React.createContext(defaultValue);
 export const AuthConsumer = AuthContext.Consumer;
 
 class AuthProvider extends React.Component<{}, IAuthState> {
-
   public state: IAuthState = {
     user: null
   };
@@ -25,7 +24,7 @@ class AuthProvider extends React.Component<{}, IAuthState> {
       <AuthContext.Provider value={this.state}>
         {this.props.children}
       </AuthContext.Provider>
-    )
+    );
   }
 }
 

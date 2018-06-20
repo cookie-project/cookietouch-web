@@ -1,6 +1,6 @@
 import AuthProvider from "@/AuthContext";
+import TopAppBar from "@/components/TopAppBar";
 import withRoot from "@/withRoot";
-import TopAppBar from "@components/TopAppBar";
 import { WithStyles, withStyles } from "@material-ui/core/styles";
 import * as React from "react";
 import "./App.css";

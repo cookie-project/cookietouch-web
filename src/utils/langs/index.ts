@@ -1,5 +1,3 @@
-import fr from "./fr.json";
-
 export enum Languages {
   FRENCH = "fr",
   ENGLISH = "en",
@@ -34,11 +32,11 @@ export default class Langs {
 
   private static current = Languages.FRENCH;
   private static langs: Map<Languages, any> = new Map([
-    [Languages.FRENCH, fr],
-    [Languages.ENGLISH, fr],
-    [Languages.DEUTSCH, fr],
-    [Languages.ITALIAN, fr],
-    [Languages.PORTUGUESE, fr],
-    [Languages.SPANISH, fr]
+    [Languages.FRENCH, require("./fr.json")],
+    [Languages.ENGLISH, require("./en.json")],
+    [Languages.DEUTSCH, require("./de.json")],
+    [Languages.ITALIAN, require("./it.json")],
+    [Languages.PORTUGUESE, require("./pt.json")],
+    [Languages.SPANISH, require("./es.json")]
   ]);
 }

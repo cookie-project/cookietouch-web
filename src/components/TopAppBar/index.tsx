@@ -42,7 +42,7 @@ class TopAppBar extends React.Component<Props, IState> {
               color="inherit"
               className={classes.flex}
             >
-              CookieTouch {Langs.go("test")}
+              CookieTouch
             </Typography>
             <AuthConsumer>
               {ctx =>
@@ -53,7 +53,7 @@ class TopAppBar extends React.Component<Props, IState> {
                       color="inherit"
                       className={classes.flex}
                     >
-                      {ctx.user.displayName}
+                      {ctx.user.email}
                     </Typography>
                     <Button color="inherit" onClick={this.signOut}>
                       Sign Out
@@ -62,7 +62,7 @@ class TopAppBar extends React.Component<Props, IState> {
                 ) : (
                   <React.Fragment>
                     <Button color="inherit" onClick={this.signIn}>
-                      Sign In
+                      Sign In {Langs.go("test", "WORK", 42)}
                     </Button>
                   </React.Fragment>
                 )
@@ -75,7 +75,7 @@ class TopAppBar extends React.Component<Props, IState> {
   }
 
   private signIn = () => {
-    signin("yovano_c@outlook.com", "XXXXXX");
+    signin("test@cookie.com", "testpassword");
   };
 
   private signOut = () => {
