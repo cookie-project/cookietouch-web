@@ -1,16 +1,16 @@
-import AppBar from '@material-ui/core/AppBar';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import { withStyles, WithStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import MenuIcon from '@material-ui/icons/Menu';
-import classNames from 'classnames';
-import * as React from 'react';
+import AppBar from "@material-ui/core/AppBar";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import MenuIcon from "@material-ui/icons/Menu";
+import classNames from "classnames";
+import * as React from "react";
 import { style, styles } from "./styles";
 
 interface IMiniDrawerState {
@@ -19,7 +19,7 @@ interface IMiniDrawerState {
 
 class MiniDrawer extends React.Component<WithStyles<style>, IMiniDrawerState> {
   public state: IMiniDrawerState = {
-    open: false,
+    open: false
   };
 
   public handleDrawerOpen = () => {
@@ -37,14 +37,20 @@ class MiniDrawer extends React.Component<WithStyles<style>, IMiniDrawerState> {
       <div className={classes.root}>
         <AppBar
           position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+          className={classNames(
+            classes.appBar,
+            this.state.open && classes.appBarShift
+          )}
         >
           <Toolbar disableGutters={!this.state.open}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
               onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, this.state.open && classes.hide)}
+              className={classNames(
+                classes.menuButton,
+                this.state.open && classes.hide
+              )}
             >
               <MenuIcon />
             </IconButton>
@@ -56,13 +62,20 @@ class MiniDrawer extends React.Component<WithStyles<style>, IMiniDrawerState> {
         <Drawer
           variant="permanent"
           classes={{
-            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
+            paper: classNames(
+              classes.drawerPaper,
+              !this.state.open && classes.drawerPaperClose
+            )
           }}
           open={this.state.open}
         >
           <div className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme!.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              {theme!.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
             </IconButton>
           </div>
           <Divider />
@@ -72,7 +85,9 @@ class MiniDrawer extends React.Component<WithStyles<style>, IMiniDrawerState> {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap={true}>{'You think water moves fast? You should see ice.'}</Typography>
+          <Typography noWrap={true}>
+            {"You think water moves fast? You should see ice."}
+          </Typography>
         </main>
       </div>
     );

@@ -3,8 +3,5 @@
   "editor.tabSize": 2,
   "typescript.tsdk": "node_modules/typescript/lib",
   "files.autoSave": "onFocusChange",
-  "editor.formatOnSave": false,
-  "[typescript]": {
-    "editor.formatOnSave": true
-  }
+  "editor.formatOnSave": true
 }
