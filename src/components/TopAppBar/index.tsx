@@ -1,5 +1,6 @@
 import { AuthConsumer } from "@/AuthContext";
 import { signin, signout } from "@/FirebaseHelpers"
+import Langs from "@/utils/langs";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import IconButton from '@material-ui/core/IconButton';
@@ -37,7 +38,7 @@ class TopAppBar extends React.Component<Props, IState> {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              CookieTouch
+              CookieTouch { Langs.go("test") }
             </Typography>
             <AuthConsumer>
               {ctx => ctx.user ?
