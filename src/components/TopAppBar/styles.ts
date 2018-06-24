@@ -1,8 +1,8 @@
 import { StyleRulesCallback } from "@material-ui/core";
 
-export type style = "root" | "flex" | "menuButton" | "appBar";
+export type TopAppBarStyle = "root" | "flex" | "menuButton" | "appBar";
 
-export const styles: StyleRulesCallback<style> = theme => ({
+export const topAppBarStyles: StyleRulesCallback<TopAppBarStyle> = theme => ({
   appBar: {
     background: "linear-gradient(45deg, #1de099, #1dc8cd)"
   },

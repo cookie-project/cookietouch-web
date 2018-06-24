@@ -1,9 +1,15 @@
+import { miniDrawerStyles } from "@/components/MiniDrawer/styles";
+import {
+  IMiniDrawerProps,
+  IMiniDrawerState,
+  MiniDrawerProps
+} from "@/components/MiniDrawer/types";
 import AppBar from "@material-ui/core/AppBar";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
+import withStyles from "@material-ui/core/styles/withStyles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -11,13 +17,8 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import MenuIcon from "@material-ui/icons/Menu";
 import classNames from "classnames";
 import * as React from "react";
-import { style, styles } from "./styles";
 
-interface IMiniDrawerState {
-  open: boolean;
-}
-
-class MiniDrawer extends React.Component<WithStyles<style>, IMiniDrawerState> {
+class MiniDrawer extends React.Component<MiniDrawerProps, IMiniDrawerState> {
   public state: IMiniDrawerState = {
     open: false
   };
@@ -94,4 +95,4 @@ class MiniDrawer extends React.Component<WithStyles<style>, IMiniDrawerState> {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(MiniDrawer);
+export default withStyles(miniDrawerStyles)<IMiniDrawerProps>(MiniDrawer);

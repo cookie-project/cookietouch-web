@@ -1,8 +1,8 @@
 import { StyleRulesCallback } from "@material-ui/core";
 
-export type style = "root";
+export type AppStyle = "root";
 
-export const styles: StyleRulesCallback<style> = theme => ({
+export const appStyles: StyleRulesCallback<AppStyle> = theme => ({
   root: {
     flexGrow: 1
   }

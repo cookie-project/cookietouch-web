@@ -14,10 +14,10 @@
   },
   "homepage": "https://cookietouch.com",
   "dependencies": {
-    "@material-ui/core": "^1.2.2",
+    "@material-ui/core": "^1.2.3",
     "@material-ui/icons": "^1.1.0",
-    "@tensorflow/tfjs": "^0.11.6",
-    "firebase": "^5.0.4",
+    "@tensorflow/tfjs": "^0.11.7",
+    "firebase": "^5.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "2.16.0",
@@ -33,8 +33,8 @@
   "devDependencies": {
     "@types/classnames": "^2.2.4",
     "@types/jest": "^23.1.1",
-    "@types/node": "^10.3.4",
-    "@types/react": "^16.4.0",
+    "@types/node": "^10.3.5",
+    "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
     "typescript": "^2.9.2"
   }

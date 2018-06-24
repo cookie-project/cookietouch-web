@@ -3,10 +3,9 @@ import TopAppBar from "@/components/TopAppBar";
 import withRoot from "@/withRoot";
 import { WithStyles, withStyles } from "@material-ui/core/styles";
 import * as React from "react";
-import "./App.css";
-import { style, styles } from "./styles";
+import { AppStyle, appStyles } from "./styles";
 
-class App extends React.Component<WithStyles<style>, {}> {
+class App extends React.Component<WithStyles<AppStyle>, {}> {
   public render() {
     const { classes } = this.props;
     return (
@@ -19,4 +18,4 @@ class App extends React.Component<WithStyles<style>, {}> {
   }
 }
 
-export default withRoot(withStyles(styles)(App));
+export default withRoot(withStyles(appStyles)(App));

@@ -1,6 +1,6 @@
 import { StyleRulesCallback } from "@material-ui/core";
 
-export type style =
+export type MiniDrawerStyle =
   | "root"
   | "appBar"
   | "appBarShift"
@@ -13,7 +13,7 @@ export type style =
 
 const drawerWidth = 240;
 
-export const styles: StyleRulesCallback<style> = theme => ({
+export const miniDrawerStyles: StyleRulesCallback<MiniDrawerStyle> = theme => ({
   appBar: {
     transition: theme.transitions.create(["width", "margin"], {
       duration: theme.transitions.duration.leavingScreen,
