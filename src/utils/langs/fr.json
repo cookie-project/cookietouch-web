@@ -9,5 +9,8 @@
   "path": "Trajet",
   "activateTitle": "Bonjour, ?",
   "activateMessage": "Vous devez activer votre email afin de pouvoir utiliser le site et le bot.",
-  "sendActivationEmail": "Envoyer l'email d'activation"
+  "sendActivationEmail": "Envoyer l'email d'activation",
+  "name": "Nom",
+  "email": "Email",
+  "update": "Mettre à jour"
 }

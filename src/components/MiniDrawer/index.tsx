@@ -1,3 +1,4 @@
+import Dashboard from "@/components/Dashboard";
 import LangSelect from "@/components/LangSelect";
 import Map from "@/components/Map";
 import { miniDrawerStyles } from "@/components/MiniDrawer/styles";
@@ -10,7 +11,6 @@ import { signout } from "@/FirebaseHelpers";
 import { MainConsumer } from "@/MainContext";
 import Langs from "@/utils/langs";
 import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
@@ -127,29 +127,11 @@ class MiniDrawer extends React.Component<MiniDrawerProps, IMiniDrawerState> {
                   <div className={classes.toolbar} />
                   {state.user.emailVerified ? (
                     <div>
-                      {page === 0 && (
-                        <Typography noWrap={true}>
-                          {state.user && state.user.displayName}
-                        </Typography>
-                      )}
+                      {page === 0 && <Dashboard user={state.user} />}
                       {page === 1 && <Map />}
                     </div>
                   ) : (
-                    <div>
-                      <Typography variant="headline">
-                        {Langs.go("activateTitle", state.user.displayName)}
-                      </Typography>
-                      <Typography variant="body1">
-                        {Langs.go("activateMessage")}
-                      </Typography>
-                      <Button
-                        style={{ marginTop: 20 }}
-                        variant="raised"
-                        onClick={this.sendActivationEmail(state.user)}
-                      >
-                        {Langs.go("sendActivationEmail")}
-                      </Button>
-                    </div>
+                    <Dashboard user={state.user} />
                   )}
                 </main>
               </div>
@@ -161,12 +143,6 @@ class MiniDrawer extends React.Component<MiniDrawerProps, IMiniDrawerState> {
       </MainConsumer>
     );
   }
-
-  private sendActivationEmail = (user: firebase.User) => (
-    e: React.MouseEvent<HTMLElement>
-  ) => {
-    user.sendEmailVerification();
-  };
 
   private handleDrawerOpen = () => {
     this.setState({ open: true });

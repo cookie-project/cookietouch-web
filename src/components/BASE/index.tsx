@@ -7,7 +7,7 @@ class Home extends React.Component<HomeProps, IHomeState> {
   public render() {
     const { classes } = this.props;
 
-    return <div className={classes.root}>TEST</div>;
+    return <div className={classes.root}>Home</div>;
   }
 }
 
