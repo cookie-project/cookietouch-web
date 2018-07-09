@@ -1,19 +1,24 @@
-import AuthProvider from "@/AuthContext";
-import TopAppBar from "@/components/TopAppBar";
+import { AppStyle, appStyles } from "@/components/App/styles";
+import Home from "@/components/Home";
+import MiniDrawer from "@/components/MiniDrawer";
+import MainProvider from "@/MainContext";
 import withRoot from "@/withRoot";
 import { WithStyles, withStyles } from "@material-ui/core/styles";
 import * as React from "react";
-import { AppStyle, appStyles } from "./styles";
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends React.Component<WithStyles<AppStyle>, {}> {
   public render() {
     const { classes } = this.props;
     return (
-      <AuthProvider>
-        <div className={classes.root}>
-          <TopAppBar />
-        </div>
-      </AuthProvider>
+      <MainProvider>
+        <BrowserRouter>
+          <div className={classes.root}>
+            <Route path="/" component={Home} exact={true} />
+            <Route path="/panel" component={MiniDrawer} exact={true} />
+          </div>
+        </BrowserRouter>
+      </MainProvider>
     );
   }
 }

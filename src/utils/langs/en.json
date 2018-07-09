@@ -1,3 +1,13 @@
 {
-  "test": "Test EN ? OK ? :)"
+  "signin": "Sign In",
+  "signout": "Sign Out",
+  "signinInfos": "If the account doesn't exists, it will automatically creates.",
+  "password": "Password",
+  "invalidEmail": "This email is invalid.",
+  "wrongPassword": "Wrong password.",
+  "home": "Home",
+  "path": "Path",
+  "activateTitle": "Hello, ?",
+  "activateMessage": "You have to activate your email to use the website and the bot.",
+  "sendActivationEmail": "Send Activation Mail"
 }

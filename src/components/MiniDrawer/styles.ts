@@ -9,7 +9,9 @@ export type MiniDrawerStyle =
   | "drawerPaper"
   | "drawerPaperClose"
   | "toolbar"
-  | "content";
+  | "content"
+  | "langSelect"
+  | "currentTab";
 
 const drawerWidth = 240;
 
@@ -34,6 +36,9 @@ export const miniDrawerStyles: StyleRulesCallback<MiniDrawerStyle> = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3
   },
+  currentTab: {
+    background: "rgba(0, 0, 0, .1)"
+  },
   drawerPaper: {
     position: "relative",
     transition: theme.transitions.create("width", {
@@ -57,6 +62,11 @@ export const miniDrawerStyles: StyleRulesCallback<MiniDrawerStyle> = theme => ({
   hide: {
     display: "none"
   },
+  langSelect: {
+    position: "absolute",
+    right: 0,
+    top: 0
+  },
   menuButton: {
     marginLeft: 12,
     marginRight: 36
@@ -64,7 +74,6 @@ export const miniDrawerStyles: StyleRulesCallback<MiniDrawerStyle> = theme => ({
   root: {
     display: "flex",
     flexGrow: 1,
-    height: 430,
     overflow: "hidden",
     position: "relative",
     zIndex: 1

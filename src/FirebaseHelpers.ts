@@ -1,4 +1,4 @@
-import * as firebase from "firebase";
+import firebase from "firebase";
 
 export function initialize() {
   const config = {
@@ -21,7 +21,7 @@ export async function signin(
     await firebase.auth().signInWithEmailAndPassword(email, password);
     return true;
   } catch (error) {
-    return false;
+    throw error;
   }
 }
 
@@ -34,10 +34,16 @@ export async function signup(
   password: string
 ): Promise<boolean> {
   try {
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    const userCred = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password);
+    if (!userCred.user) {
+      return false;
+    }
+    userCred.user.sendEmailVerification();
     return true;
   } catch (error) {
-    return false;
+    throw error;
   }
 }
 

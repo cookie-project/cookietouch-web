@@ -1,3 +1,5 @@
+import LiteEvent from "@/utils/LiteEvent";
+
 export enum Languages {
   FRENCH = "fr",
   ENGLISH = "en",
@@ -10,6 +12,15 @@ export enum Languages {
 export default class Langs {
   public static set lang(lang: Languages) {
     this.current = lang;
+    this.onChanged.trigger();
+  }
+
+  public static get lang() {
+    return this.current;
+  }
+
+  public static get Changed() {
+    return this.onChanged.expose();
   }
 
   public static go(key: string, ...params: any[]): string {
@@ -31,6 +42,9 @@ export default class Langs {
   }
 
   private static current = Languages.FRENCH;
+
+  private static onChanged = new LiteEvent<void>();
+
   private static langs: Map<Languages, any> = new Map([
     [Languages.FRENCH, require("./fr.json")],
     [Languages.ENGLISH, require("./en.json")],

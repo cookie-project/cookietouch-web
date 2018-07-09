@@ -1,3 +1,13 @@
 {
-  "test": "Test FR ? OK ? :)"
+  "signin": "Se connecter",
+  "signout": "Se déconnecter",
+  "signinInfos": "Si le compte n'existe pas, il sera automatiquement créé.",
+  "password": "Mot de passe",
+  "invalidEmail": "Cette adresse email est invalide.",
+  "wrongPassword": "Mauvais mot de passe.",
+  "home": "Accueil",
+  "path": "Trajet",
+  "activateTitle": "Bonjour, ?",
+  "activateMessage": "Vous devez activer votre email afin de pouvoir utiliser le site et le bot.",
+  "sendActivationEmail": "Envoyer l'email d'activation"
 }
