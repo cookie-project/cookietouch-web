@@ -157,14 +157,12 @@ class Home extends React.Component<HomeProps, IHomeState> {
   };
 
   private signin = async () => {
+    const email = this.state.email;
+    const password = this.state.password;
     try {
-      const email = this.state.email;
-      const password = this.state.password;
       this.setState({ email: "", password: "" });
       await signin(email, password);
     } catch (error) {
-      // tslint:disable-next-line:no-console
-      console.log(error.message);
       switch (error.code) {
         case "auth/invalid-email": {
           this.setState({
@@ -183,10 +181,9 @@ class Home extends React.Component<HomeProps, IHomeState> {
       }
       // ECHEC CONNECTION
       try {
-        await signup(this.state.email, this.state.password);
+        await signup(email, password);
       } catch (errorSignup) {
-        // tslint:disable-next-line:no-console
-        console.log("test", errorSignup.message);
+        //
       }
     }
   };
