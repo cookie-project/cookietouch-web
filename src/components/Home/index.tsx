@@ -183,7 +183,9 @@ class Home extends React.Component<HomeProps, IHomeState> {
       try {
         await signup(email, password);
       } catch (errorSignup) {
-        //
+        // ECHEC SIGNUP
+        // tslint:disable-next-line:no-console
+        console.log(error.message);
       }
     }
   };
