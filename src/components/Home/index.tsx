@@ -158,8 +158,10 @@ class Home extends React.Component<HomeProps, IHomeState> {
 
   private signin = async () => {
     try {
+      const email = this.state.email;
+      const password = this.state.password;
       this.setState({ email: "", password: "" });
-      await signin(this.state.email, this.state.password);
+      await signin(email, password);
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-email": {
