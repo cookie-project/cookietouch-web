@@ -188,6 +188,7 @@ class Dashboard extends React.Component<DashboardProps, IDashboardState> {
     if (this.state.email && this.props.user.email !== this.state.email) {
       this.props.user
         .updateEmail(this.state.email)
+        .then(() => this.props.user.sendEmailVerification())
         .catch(error => this.setState({ errorProfile: error.message }));
     }
   };

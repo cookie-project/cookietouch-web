@@ -163,6 +163,8 @@ class Home extends React.Component<HomeProps, IHomeState> {
       this.setState({ email: "", password: "" });
       await signin(email, password);
     } catch (error) {
+      // tslint:disable-next-line:no-console
+      console.log(error.message);
       switch (error.code) {
         case "auth/invalid-email": {
           this.setState({
@@ -183,7 +185,8 @@ class Home extends React.Component<HomeProps, IHomeState> {
       try {
         await signup(this.state.email, this.state.password);
       } catch (errorSignup) {
-        //
+        // tslint:disable-next-line:no-console
+        console.log("test", errorSignup.message);
       }
     }
   };
