@@ -14,7 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-// import axios from "axios";
+import axios from "axios";
 import * as React from "react";
 
 class Dashboard extends React.Component<DashboardProps, IDashboardState> {
@@ -28,14 +28,12 @@ class Dashboard extends React.Component<DashboardProps, IDashboardState> {
   };
 
   public componentDidMount() {
-    /*
     axios
       .get("https://forum.cookietouch.com/api/discussions")
       .then(response => {
         // tslint:disable-next-line:no-console
         console.log(response.data);
       });
-    */
   }
 
   public render() {

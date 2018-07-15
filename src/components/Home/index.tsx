@@ -189,6 +189,12 @@ class Home extends React.Component<HomeProps, IHomeState> {
       }
     }
   };
+
+  /*
+  private forgotPassword = () => {
+    firebase.auth().sendPasswordResetEmail)
+  }
+  */
 }
 
 export default withStyles(homeStyles)<IHomeProps>(Home);

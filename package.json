@@ -3,6 +3,7 @@
   "description": "CookieTouch Web",
   "version": "0.0.1",
   "private": true,
+  "proxy": "https://cookietouch.s3.amazonaws.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cookie-project/cookietouch-web.git"
@@ -14,9 +15,9 @@
   },
   "homepage": "https://cookietouch.com",
   "dependencies": {
-    "@material-ui/core": "^1.3.1",
+    "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
-    "@tensorflow/tfjs": "^0.12.0",
+    "@tensorflow/tfjs": "^0.12.2",
     "axios": "^0.18.0",
     "firebase": "^5.2.0",
     "leaflet": "^1.3.1",
@@ -25,6 +26,7 @@
     "react-leaflet": "^2.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "2.16.0",
+    "recharts": "^1.0.1",
     "typeface-roboto": "^0.0.54"
   },
   "scripts": {
@@ -38,12 +40,13 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.4",
-    "@types/jest": "^23.1.4",
+    "@types/jest": "^23.1.6",
     "@types/node": "^10.5.2",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
     "@types/react-leaflet": "^1.1.5",
     "@types/react-router-dom": "^4.2.7",
+    "@types/recharts": "^1.0.24",
     "typescript": "^2.9.2"
   }
 }

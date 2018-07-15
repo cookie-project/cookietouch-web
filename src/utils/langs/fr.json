@@ -6,11 +6,13 @@
   "invalidEmail": "Cette adresse email est invalide.",
   "wrongPassword": "Mauvais mot de passe.",
   "home": "Accueil",
-  "path": "Trajet",
+  "map": "Carte",
   "activateTitle": "Bonjour, ?",
   "activateMessage": "Vous devez activer votre email afin de pouvoir utiliser le site et le bot.",
   "sendActivationEmail": "Envoyer l'email d'activation",
   "name": "Nom",
   "email": "Email",
-  "update": "Mettre à jour"
+  "update": "Mettre à jour",
+  "downloads": "Téléchargements",
+  "stats": "Stats"
 }

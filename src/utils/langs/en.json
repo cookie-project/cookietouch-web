@@ -6,11 +6,13 @@
   "invalidEmail": "This email is invalid.",
   "wrongPassword": "Wrong password.",
   "home": "Home",
-  "path": "Path",
+  "map": "Map",
   "activateTitle": "Hello, ?",
   "activateMessage": "You have to activate your email to use the website and the bot.",
   "sendActivationEmail": "Send Activation Mail",
   "name": "Name",
   "email": "Email",
-  "update": "Update"
+  "update": "Update",
+  "downloads": "Downloads",
+  "stats": "Stats"
 }

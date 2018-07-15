@@ -1,4 +1,5 @@
 import Dashboard from "@/components/Dashboard";
+import Downloads from "@/components/Downloads";
 import LangSelect from "@/components/LangSelect";
 import Map from "@/components/Map";
 import { miniDrawerStyles } from "@/components/MiniDrawer/styles";
@@ -7,6 +8,7 @@ import {
   IMiniDrawerState,
   MiniDrawerProps
 } from "@/components/MiniDrawer/types";
+import Stats from "@/components/Stats";
 import { signout } from "@/FirebaseHelpers";
 import { MainConsumer } from "@/MainContext";
 import Langs from "@/utils/langs";
@@ -21,8 +23,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import BubbleChartIcon from "@material-ui/icons/BubbleChart";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import DownloadIcon from "@material-ui/icons/CloudDownload";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HomeIcon from "@material-ui/icons/Home";
 import MapIcon from "@material-ui/icons/Map";
@@ -113,7 +117,27 @@ class MiniDrawer extends React.Component<MiniDrawerProps, IMiniDrawerState> {
                       <ListItemIcon>
                         <MapIcon />
                       </ListItemIcon>
-                      <ListItemText primary={Langs.go("path")} />
+                      <ListItemText primary={Langs.go("map")} />
+                    </ListItem>
+                    <ListItem
+                      className={classNames(page === 2 && classes.currentTab)}
+                      button={true}
+                      onClick={this.changePage(2)}
+                    >
+                      <ListItemIcon>
+                        <DownloadIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={Langs.go("downloads")} />
+                    </ListItem>
+                    <ListItem
+                      className={classNames(page === 3 && classes.currentTab)}
+                      button={true}
+                      onClick={this.changePage(3)}
+                    >
+                      <ListItemIcon>
+                        <BubbleChartIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={Langs.go("stats")} />
                     </ListItem>
                     <ListItem button={true} onClick={this.signout}>
                       <ListItemIcon>
@@ -129,6 +153,8 @@ class MiniDrawer extends React.Component<MiniDrawerProps, IMiniDrawerState> {
                     <div>
                       {page === 0 && <Dashboard user={state.user} />}
                       {page === 1 && <Map />}
+                      {page === 2 && <Downloads />}
+                      {page === 3 && <Stats />}
                     </div>
                   ) : (
                     <Dashboard user={state.user} />

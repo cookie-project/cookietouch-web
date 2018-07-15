@@ -1,11 +1,12 @@
 import { mapStyles } from "@/components/Map/styles";
 import { IMapProps, IMapState, MapProps } from "@/components/Map/types";
+import MapViewer from "@/components/MapViewer/Map";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { LatLng } from "leaflet";
+// import { LatLng } from "leaflet";
 import * as React from "react";
-import { Map as LeafMap, Marker, Popup, TileLayer } from "react-leaflet";
+// import { Map as LeafMap, Marker, Popup, TileLayer } from "react-leaflet";
 
-const position: LatLng = new LatLng(0, 0);
+// const position: LatLng = new LatLng(0, 0);
 
 class Map extends React.Component<MapProps, IMapState> {
   public render() {
@@ -13,14 +14,15 @@ class Map extends React.Component<MapProps, IMapState> {
 
     return (
       <div className={classes.root}>
-        <LeafMap center={position} zoom={1}>
+        <MapViewer />
+        {/*<LeafMap center={position} zoom={1}>
           <TileLayer url="./maps/1/{x}/{y}.jpg" />
           <Marker position={position}>
             <Popup>
               A pretty CSS3 popup.<br />Easily customizable.
             </Popup>
           </Marker>
-        </LeafMap>
+    </LeafMap>*/}
       </div>
     );
   }
