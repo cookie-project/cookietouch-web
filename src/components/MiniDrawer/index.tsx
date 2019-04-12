@@ -1,192 +1,227 @@
-import Dashboard from "@/components/Dashboard";
-import Downloads from "@/components/Downloads";
-import LangSelect from "@/components/LangSelect";
-import Map from "@/components/Map";
-import { miniDrawerStyles } from "@/components/MiniDrawer/styles";
-import {
-  IMiniDrawerProps,
-  IMiniDrawerState,
-  MiniDrawerProps
-} from "@/components/MiniDrawer/types";
-import Stats from "@/components/Stats";
-import { signout } from "@/FirebaseHelpers";
-import { MainConsumer } from "@/MainContext";
-import Langs from "@/utils/langs";
-import AppBar from "@material-ui/core/AppBar";
-import Divider from "@material-ui/core/Divider";
-import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import BubbleChartIcon from "@material-ui/icons/BubbleChart";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import DownloadIcon from "@material-ui/icons/CloudDownload";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import HomeIcon from "@material-ui/icons/Home";
-import MapIcon from "@material-ui/icons/Map";
-import MenuIcon from "@material-ui/icons/Menu";
-import classNames from "classnames";
-import * as React from "react";
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import classNames from 'classnames';
+import { makeStyles, useTheme } from '@material-ui/styles';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+import DownloadIcon from '@material-ui/icons/CloudDownload';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from '@material-ui/icons/Home';
+import { Theme } from '@material-ui/core';
+import { useOvermind } from '../../overmind';
+import Stats from '../Stats';
+import Dashboard from '../Dashboard';
+import Downloads from '../Downloads';
+import Lang from '../../utils/lang';
+import { Redirect } from 'react-router-dom';
+import LangSelect from '../LangSelect';
 
-class MiniDrawer extends React.Component<MiniDrawerProps, IMiniDrawerState> {
-  public state: IMiniDrawerState = {
-    open: false,
-    page: 0
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme: Theme) => ({
+  appBar: {
+    transition: theme.transitions.create(['width', 'margin'], {
+      duration: theme.transitions.duration.leavingScreen,
+      easing: theme.transitions.easing.sharp
+    }),
+    zIndex: theme.zIndex.drawer + 1
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['width', 'margin'], {
+      duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.sharp
+    }),
+    width: `calc(100% - ${drawerWidth}px)`
+  },
+  content: {
+    backgroundColor: theme.palette.background.default,
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3
+  },
+  currentTab: {
+    background: 'rgba(0, 0, 0, .1)'
+  },
+  drawerPaper: {
+    position: 'relative',
+    transition: theme.transitions.create('width', {
+      duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.sharp
+    }),
+    whiteSpace: 'nowrap',
+    width: drawerWidth
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      duration: theme.transitions.duration.leavingScreen,
+      easing: theme.transitions.easing.sharp
+    }),
+    width: theme.spacing.unit * 7,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 9
+    }
+  },
+  hide: {
+    display: 'none'
+  },
+  langSelect: {
+    position: 'absolute',
+    right: 0,
+    top: 0
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 36
+  },
+  root: {
+    display: 'flex',
+    flexGrow: 1,
+    overflow: 'hidden',
+    position: 'relative',
+    zIndex: 1
+  },
+  toolbar: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar
+  }
+}));
+
+function MiniDrawer() {
+  const classes = useStyles();
+  const theme = useTheme<Theme>();
+  const [open, setOpen] = React.useState(false);
+  const [page, setPage] = React.useState(0);
+  const { state, effects } = useOvermind();
+
+  const changePage = (page: number) => () => {
+    setPage(page);
   };
 
-  public render() {
-    const { classes, theme } = this.props;
-    const { open, page } = this.state;
-
-    return (
-      <MainConsumer>
-        {state => {
-          if (state.user) {
-            return (
-              <div className={classes.root}>
-                <AppBar
-                  position="absolute"
-                  className={classNames(
-                    classes.appBar,
-                    open && classes.appBarShift
-                  )}
-                >
-                  <Toolbar disableGutters={!open}>
-                    <IconButton
-                      color="inherit"
-                      aria-label="open drawer"
-                      onClick={this.handleDrawerOpen}
-                      className={classNames(
-                        classes.menuButton,
-                        open && classes.hide
-                      )}
-                    >
-                      <MenuIcon />
-                    </IconButton>
-                    <Typography variant="title" color="inherit" noWrap={true}>
-                      CookieTouch
-                    </Typography>
-                    <div className={classes.langSelect}>
-                      <LangSelect />
-                    </div>
-                  </Toolbar>
-                </AppBar>
-                <Drawer
-                  variant="permanent"
-                  classes={{
-                    paper: classNames(
-                      classes.drawerPaper,
-                      !open && classes.drawerPaperClose
-                    )
-                  }}
-                  open={open}
-                >
-                  <div className={classes.toolbar}>
-                    <IconButton onClick={this.handleDrawerClose}>
-                      {theme && theme.direction === "rtl" ? (
-                        <ChevronRightIcon />
-                      ) : (
-                        <ChevronLeftIcon />
-                      )}
-                    </IconButton>
-                  </div>
-                  <Divider />
-                  <List>
-                    <ListItem
-                      className={classNames(page === 0 && classes.currentTab)}
-                      button={true}
-                      onClick={this.changePage(0)}
-                    >
-                      <ListItemIcon>
-                        <HomeIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={Langs.go("home")} />
-                    </ListItem>
-                    <ListItem
-                      className={classNames(page === 1 && classes.currentTab)}
-                      button={true}
-                      onClick={this.changePage(1)}
-                    >
-                      <ListItemIcon>
-                        <MapIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={Langs.go("map")} />
-                    </ListItem>
-                    <ListItem
-                      className={classNames(page === 2 && classes.currentTab)}
-                      button={true}
-                      onClick={this.changePage(2)}
-                    >
-                      <ListItemIcon>
-                        <DownloadIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={Langs.go("downloads")} />
-                    </ListItem>
-                    <ListItem
-                      className={classNames(page === 3 && classes.currentTab)}
-                      button={true}
-                      onClick={this.changePage(3)}
-                    >
-                      <ListItemIcon>
-                        <BubbleChartIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={Langs.go("stats")} />
-                    </ListItem>
-                    <ListItem button={true} onClick={this.signout}>
-                      <ListItemIcon>
-                        <ExitToAppIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={Langs.go("signout")} />
-                    </ListItem>
-                  </List>
-                </Drawer>
-                <main className={classes.content}>
-                  <div className={classes.toolbar} />
-                  {state.user.emailVerified ? (
-                    <div>
-                      {page === 0 && <Dashboard user={state.user} />}
-                      {page === 1 && <Map />}
-                      {page === 2 && <Downloads />}
-                      {page === 3 && <Stats />}
-                    </div>
-                  ) : (
-                    <Dashboard user={state.user} />
-                  )}
-                </main>
-              </div>
-            );
-          } else {
-            return <Redirect to="/" />;
-          }
-        }}
-      </MainConsumer>
-    );
+  function handleDrawerOpen() {
+    setOpen(true);
   }
 
-  private handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
+  function handleDrawerClose() {
+    setOpen(false);
+  }
 
-  private handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
-
-  private changePage = (page: number) => (
-    event: React.MouseEvent<HTMLElement>
-  ) => {
-    this.setState({ page });
-  };
-
-  private signout = () => {
-    signout();
-  };
+  return (
+    <div>
+      {!state.firebase.user ? (
+        <Redirect to="/" />
+      ) : (
+        <div className={classes.root}>
+          <AppBar
+            position="absolute"
+            className={classNames(classes.appBar, open && classes.appBarShift)}
+          >
+            <Toolbar disableGutters={!open}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                className={classNames(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" color="inherit" noWrap={true}>
+                CookieTouch
+              </Typography>
+              <div className={classes.langSelect}>
+                <LangSelect />
+              </div>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: classNames(
+                classes.drawerPaper,
+                !open && classes.drawerPaperClose
+              )
+            }}
+            open={open}
+          >
+            <div className={classes.toolbar}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme && theme.direction === 'rtl' ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              <ListItem
+                className={classNames(page === 0 && classes.currentTab)}
+                button={true}
+                onClick={changePage(0)}
+              >
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary={Lang.go('home')} />
+              </ListItem>
+              <ListItem
+                className={classNames(page === 1 && classes.currentTab)}
+                button={true}
+                onClick={changePage(1)}
+              >
+                <ListItemIcon>
+                  <DownloadIcon />
+                </ListItemIcon>
+                <ListItemText primary={Lang.go('downloads')} />
+              </ListItem>
+              <ListItem
+                className={classNames(page === 2 && classes.currentTab)}
+                button={true}
+                onClick={changePage(2)}
+              >
+                <ListItemIcon>
+                  <BubbleChartIcon />
+                </ListItemIcon>
+                <ListItemText primary={Lang.go('stats')} />
+              </ListItem>
+              <ListItem button={true} onClick={effects.firebase.signout}>
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary={Lang.go('signout')} />
+              </ListItem>
+            </List>
+          </Drawer>
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            {state.firebase.user.emailVerified ? (
+              <div>
+                {page === 0 && <Dashboard />}
+                {page === 1 && <Downloads />}
+                {page === 2 && <Stats />}
+              </div>
+            ) : (
+              <Dashboard />
+            )}
+          </main>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default withStyles(miniDrawerStyles)<IMiniDrawerProps>(MiniDrawer);
+export default MiniDrawer;

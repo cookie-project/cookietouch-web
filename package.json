@@ -1,9 +1,8 @@
 {
   "name": "cookietouch-web",
   "description": "CookieTouch Web",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
-  "proxy": "https://cookietouch.s3.amazonaws.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cookie-project/cookietouch-web.git"
@@ -15,38 +14,53 @@
   },
   "homepage": "https://cookietouch.com",
   "dependencies": {
-    "@material-ui/core": "^1.4.0",
-    "@material-ui/icons": "^1.1.0",
-    "@tensorflow/tfjs": "^0.12.2",
-    "axios": "^0.18.0",
-    "firebase": "^5.2.0",
-    "leaflet": "^1.3.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-leaflet": "^2.0.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "2.16.0",
-    "recharts": "^1.0.1",
-    "typeface-roboto": "^0.0.54"
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/styles": "^3.0.0-alpha.10",
+    "@types/jest": "24.0.11",
+    "@types/node": "11.13.4",
+    "@types/react": "16.8.13",
+    "@types/react-dom": "16.8.4",
+    "firebase": "^5.9.4",
+    "overmind": "^17.1.0",
+    "overmind-react": "^18.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "recharts": "^1.5.0",
+    "rxfire": "^3.3.11",
+    "rxjs": "^6.4.0",
+    "typeface-roboto": "^0.0.54",
+    "typescript": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t stylish",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix",
-    "lint:check": "tslint-config-prettier-check ./tslint.json"
+    "devtools": "overmind-devtools"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "devDependencies": {
-    "@types/classnames": "^2.2.4",
-    "@types/jest": "^23.1.6",
-    "@types/node": "^10.5.2",
-    "@types/react": "^16.4.6",
-    "@types/react-dom": "^16.0.6",
-    "@types/react-leaflet": "^1.1.5",
-    "@types/react-router-dom": "^4.2.7",
-    "@types/recharts": "^1.0.24",
-    "typescript": "^2.9.2"
+    "@types/classnames": "^2.2.7",
+    "@types/react-router-dom": "^4.3.2",
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.0.1",
+    "overmind-devtools": "^18.1.0",
+    "prettier": "^1.16.4"
   }
 }

@@ -1,6 +1,6 @@
 {
   "short_name": "CookieTouch",
-  "name": "CookieTouch",
+  "name": "CookieTouch Web",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,8 +8,8 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#eec485",
   "background_color": "#ffffff"
 }

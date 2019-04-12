@@ -1,201 +1,195 @@
-import Discussion from "@/components/Dashboard/Discussion";
-import { dashboardStyles } from "@/components/Dashboard/styles";
-import {
-  DashboardProps,
-  IDashboardProps,
-  IDashboardState
-} from "@/components/Dashboard/types";
-import Langs from "@/utils/langs";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Paper from "@material-ui/core/Paper";
-import withStyles from "@material-ui/core/styles/withStyles";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import axios from "axios";
-import * as React from "react";
+import React, { FC, useState } from 'react';
+import { makeStyles } from '@material-ui/styles';
+import { useOvermind } from '../../overmind';
+import { Paper, Typography, Button, Grid, TextField } from '@material-ui/core';
+import Lang from '../../utils/lang';
 
-class Dashboard extends React.Component<DashboardProps, IDashboardState> {
-  public state: IDashboardState = {
-    discussions: [],
-    email: this.props.user.email,
-    errorPassword: "",
-    errorProfile: "",
-    name: this.props.user.displayName,
-    password: ""
-  };
-
-  public componentDidMount() {
-    axios
-      .get("https://forum.cookietouch.com/api/discussions")
-      .then(response => {
-        // tslint:disable-next-line:no-console
-        console.log(response.data);
-      });
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1
   }
+});
 
-  public render() {
-    const { classes, user } = this.props;
-    const { discussions, email, name, password } = this.state;
+const Dashboard: FC = () => {
+  const classes = useStyles();
+  const { state } = useOvermind();
+  const [email, setEmail] = useState(
+    (state.firebase.user && state.firebase.user.email) || ''
+  );
+  const [name, setName] = useState(
+    (state.firebase.user && state.firebase.user.displayName) || ''
+  );
+  const [errorPassword, setErrorPassword] = useState('');
+  const [errorProfile, setErrorProfile] = useState('');
+  const [password, setPassword] = useState('');
 
-    return (
-      <div className={classes.root}>
-        {!user.emailVerified && (
-          <Paper
-            style={{
-              background: "rgba(255, 0, 0, .3)",
-              marginBottom: 30,
-              padding: 20
-            }}
-          >
-            <Typography variant="headline">
-              {Langs.go("activateTitle", name)}
-            </Typography>
-            <Typography variant="body1">
-              {Langs.go("activateMessage")}
-            </Typography>
-            <Button
-              style={{ marginTop: 20 }}
-              variant="raised"
-              color="primary"
-              onClick={this.sendActivationEmail(user)}
-            >
-              {Langs.go("sendActivationEmail")}
-            </Button>
-          </Paper>
-        )}
-        <Grid container={true} spacing={8}>
-          <Grid item={true} md={6} xs={12}>
-            <Grid container={true} spacing={8}>
-              <Grid item={true} md={6} xs={12}>
-                <Paper style={{ margin: 10, padding: 10 }}>
-                  <TextField
-                    autoFocus={true}
-                    margin="dense"
-                    id="name"
-                    name="name"
-                    label={Langs.go("name")}
-                    value={name ? name : ""}
-                    fullWidth={true}
-                    onChange={this.updateName}
-                    type="text"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                  <TextField
-                    autoFocus={true}
-                    margin="dense"
-                    id="email"
-                    name="email"
-                    label={Langs.go("email")}
-                    value={email ? email : ""}
-                    fullWidth={true}
-                    onChange={this.updateEmail}
-                    type="email"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                  <Button
-                    style={{ marginTop: 20 }}
-                    color="primary"
-                    variant="raised"
-                    onClick={this.updateProfile}
-                  >
-                    {Langs.go("update")}
-                  </Button>
-                  {this.state.errorProfile !== "" && (
-                    <Typography variant="body1" style={{ color: "red" }}>
-                      {this.state.errorProfile}
-                    </Typography>
-                  )}
-                </Paper>
-              </Grid>
-              <Grid item={true} md={6} xs={12}>
-                <Paper style={{ margin: 10, padding: 10 }}>
-                  <TextField
-                    autoFocus={true}
-                    margin="dense"
-                    id="password"
-                    name="password"
-                    label={Langs.go("password")}
-                    value={password ? password : ""}
-                    fullWidth={true}
-                    onChange={this.updatePassword}
-                    type="password"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                  <Button
-                    style={{ marginTop: 20 }}
-                    color="primary"
-                    variant="raised"
-                    onClick={this.sendUpdatePassword}
-                  >
-                    {Langs.go("update")}
-                  </Button>
-                  {this.state.errorPassword !== "" && (
-                    <Typography variant="body1" style={{ color: "red" }}>
-                      {this.state.errorPassword}
-                    </Typography>
-                  )}
-                </Paper>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item={true} md={6} xs={12}>
-            <List>
-              {discussions.map((d, index) => (
-                <ListItem key={index}>
-                  <Discussion discussion={d} />
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
-        </Grid>
-      </div>
-    );
-  }
-
-  private sendActivationEmail = (user: firebase.User) => (
-    e: React.MouseEvent<HTMLElement>
-  ) => {
-    user.sendEmailVerification();
+  const sendActivationEmail = (user: firebase.User | null) => () => {
+    if (user) {
+      user.sendEmailVerification();
+    }
   };
 
-  private updateName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ name: event.target.value });
+  const updateName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
   };
 
-  private updateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ email: event.target.value });
+  const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
   };
 
-  private updatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ password: event.target.value });
+  const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
   };
 
-  private updateProfile = (event: React.MouseEvent<HTMLElement>) => {
-    if (this.props.user.displayName !== this.state.name) {
-      this.props.user
+  const updateProfile = () => {
+    if (!state.firebase.user) {
+      return;
+    }
+
+    if (state.firebase.user.displayName !== name) {
+      state.firebase.user
         .updateProfile({
-          displayName: this.state.name,
+          displayName: name,
           photoURL: null
         })
-        .catch(error => this.setState({ errorProfile: error.message }));
+        .catch(error => setErrorProfile(error.message));
     }
 
-    if (this.state.email && this.props.user.email !== this.state.email) {
-      this.props.user
-        .updateEmail(this.state.email)
-        .then(() => this.props.user.sendEmailVerification())
-        .catch(error => this.setState({ errorProfile: error.message }));
+    if (state.firebase.user.email !== email) {
+      state.firebase.user
+        .updateEmail(email)
+        .then(() => {
+          if (state.firebase.user) {
+            state.firebase.user.sendEmailVerification();
+          }
+        })
+        .catch(error => setErrorProfile(error.message));
     }
   };
 
-  private sendUpdatePassword = (event: React.MouseEvent<HTMLElement>) => {
-    this.props.user
-      .updatePassword(this.state.password)
-      .catch(error => this.setState({ errorPassword: error.message }));
+  const sendUpdatePassword = () => {
+    if (!state.firebase.user) {
+      return;
+    }
+    state.firebase.user
+      .updatePassword(password)
+      .catch(error => setErrorPassword(error.message));
   };
-}
 
-export default withStyles(dashboardStyles)<IDashboardProps>(Dashboard);
+  return (
+    <div className={classes.root}>
+      {state.firebase.user && !state.firebase.user.emailVerified && (
+        <Paper
+          style={{
+            background: 'rgba(255, 0, 0, .3)',
+            marginBottom: 30,
+            padding: 20
+          }}
+        >
+          <Typography variant="headline">
+            {Lang.go('activateTitle', name)}
+          </Typography>
+          <Typography variant="body1">{Lang.go('activateMessage')}</Typography>
+          <Button
+            style={{ marginTop: 20 }}
+            variant="contained"
+            color="primary"
+            onClick={sendActivationEmail(state.firebase.user)}
+          >
+            {Lang.go('sendActivationEmail')}
+          </Button>
+        </Paper>
+      )}
+      <Grid container={true} spacing={8}>
+        <Grid item={true} md={6}>
+          <Grid container={true} spacing={8}>
+            <Grid item={true} md={6} xs={12}>
+              <Paper style={{ margin: 10, padding: 10 }}>
+                <TextField
+                  autoFocus={true}
+                  margin="dense"
+                  id="name"
+                  name="name"
+                  label={Lang.go('name')}
+                  value={name ? name : ''}
+                  fullWidth={true}
+                  onChange={updateName}
+                  type="text"
+                  InputLabelProps={{ shrink: true }}
+                />
+                <TextField
+                  autoFocus={true}
+                  margin="dense"
+                  id="email"
+                  name="email"
+                  label={Lang.go('email')}
+                  value={email ? email : ''}
+                  fullWidth={true}
+                  onChange={updateEmail}
+                  type="email"
+                  InputLabelProps={{ shrink: true }}
+                />
+                <Button
+                  style={{ marginTop: 20 }}
+                  color="primary"
+                  variant="contained"
+                  onClick={updateProfile}
+                >
+                  {Lang.go('update')}
+                </Button>
+                {errorProfile !== '' && (
+                  <Typography variant="body1" style={{ color: 'red' }}>
+                    {errorProfile}
+                  </Typography>
+                )}
+              </Paper>
+            </Grid>
+            <Grid item={true} md={6} xs={12}>
+              <Paper style={{ margin: 10, padding: 10 }}>
+                <TextField
+                  autoFocus={true}
+                  margin="dense"
+                  id="password"
+                  name="password"
+                  label={Lang.go('password')}
+                  value={password ? password : ''}
+                  fullWidth={true}
+                  onChange={updatePassword}
+                  type="password"
+                  InputLabelProps={{ shrink: true }}
+                />
+                <Button
+                  style={{ marginTop: 20 }}
+                  color="primary"
+                  variant="contained"
+                  onClick={sendUpdatePassword}
+                >
+                  {Lang.go('update')}
+                </Button>
+                {errorPassword !== '' && (
+                  <Typography variant="body1" style={{ color: 'red' }}>
+                    {errorPassword}
+                  </Typography>
+                )}
+              </Paper>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item={true} md={6} xs={12}>
+          <a href="https://docs.cookietouch.com">Documentation</a>
+          <br />
+          <a href="https://discord.gg/R7HsTnD">Join our discord</a>
+          <iframe
+            src="https://discordapp.com/widget?id=463708615488962562&theme=dark"
+            width="100%"
+            height="600px"
+            // allowTransparency={true}
+            frameBorder="0"
+          />
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
+
+export default Dashboard;
