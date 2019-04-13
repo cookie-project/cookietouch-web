@@ -6,7 +6,7 @@
   "invalidEmail": "Cette adresse email est invalide.",
   "wrongPassword": "Mauvais mot de passe.",
   "home": "Accueil",
-  "activateTitle": "Bonjour, ?",
+  "activateTitle": "Bonjour, {{name}}",
   "activateMessage": "Vous devez activer votre email afin de pouvoir utiliser le site et le bot.",
   "sendActivationEmail": "Envoyer l'email d'activation",
   "name": "Nom",

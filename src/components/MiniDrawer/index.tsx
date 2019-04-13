@@ -18,7 +18,7 @@ import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
-import { Theme } from '@material-ui/core';
+import { Theme, Link } from '@material-ui/core';
 import { useOvermind } from '../../overmind';
 import Stats from '../Stats';
 import Dashboard from '../Dashboard';
@@ -142,6 +142,27 @@ const MiniDrawer: FC = () => {
               <Typography variant="h6" noWrap={true}>
                 CookieTouch
               </Typography>
+              <Link
+                style={{ padding: 20, margin: 5 }}
+                color="inherit"
+                href="https://docs.cookietouch.com"
+              >
+                Documentation
+              </Link>
+              <Link
+                style={{ padding: 20, margin: 5 }}
+                color="inherit"
+                href="https://discord.gg/R7HsTnD"
+              >
+                Discord
+              </Link>
+              <Link
+                style={{ padding: 20, margin: 5 }}
+                color="inherit"
+                href="https://commerce.coinbase.com/checkout/ecfce59a-cf8e-426d-a1cf-50e5e7170e8b"
+              >
+                Donate
+              </Link>
               <div className={classes.langSelect}>
                 <LangSelect />
               </div>

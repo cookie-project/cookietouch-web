@@ -34,21 +34,16 @@ const LangSelect: FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = event.target.value;
-    i18n.changeLanguage(lang);
+    if (lang !== i18n.language) {
+      i18n.changeLanguage(lang);
+    }
   };
 
   return (
     <div className={classes.root}>
       <FormControl className={classes.formControl}>
         {/*<InputLabel htmlFor="lang-simple">LANG</InputLabel>*/}
-        <Select
-          value={i18n.language}
-          onChange={handleChange}
-          inputProps={{
-            id: 'lang-simple',
-            name: 'lang'
-          }}
-        >
+        <Select value={i18n.language} onChange={handleChange}>
           {i18n.languages.map(l => (
             <MenuItem key={l} value={l}>
               <img src={langsImages[l]} />
