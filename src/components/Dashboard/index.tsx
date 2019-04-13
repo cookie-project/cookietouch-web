@@ -100,7 +100,7 @@ const Dashboard: FC = () => {
         </Paper>
       )}
       <Grid container={true} spacing={8}>
-        <Grid item={true} md={6} xs={12}>
+        <Grid item={true} md={4} xs={12}>
           <Paper style={{ margin: 10, padding: 10 }}>
             <TextField
               autoFocus={true}
@@ -141,7 +141,7 @@ const Dashboard: FC = () => {
             )}
           </Paper>
         </Grid>
-        <Grid item={true} md={6} xs={12}>
+        <Grid item={true} md={4} xs={12}>
           <Paper style={{ margin: 10, padding: 10 }}>
             <TextField
               autoFocus={true}
@@ -169,6 +169,14 @@ const Dashboard: FC = () => {
               </Typography>
             )}
           </Paper>
+        </Grid>
+        <Grid item md={4} xs={12}>
+          <iframe
+            src="https://discordapp.com/widget?id=463708615488962562&theme=dark"
+            width="100%"
+            height="600px"
+            frameBorder="0"
+          />
         </Grid>
       </Grid>
     </div>
