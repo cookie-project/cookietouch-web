@@ -90,7 +90,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     overflow: 'hidden',
     position: 'relative',
-    zIndex: 1
+    zIndex: 1,
+    height: '100%'
   },
   toolbar: {
     alignItems: 'center',
