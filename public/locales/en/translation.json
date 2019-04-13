@@ -13,5 +13,8 @@
   "email": "Email",
   "update": "Update",
   "downloads": "Downloads",
-  "stats": "Stats"
+  "stats": "Stats",
+  "users": "Users",
+  "usersConnected": "Connected users",
+  "usersDisconnected": "Disconnected users"
 }

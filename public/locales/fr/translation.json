@@ -13,5 +13,8 @@
   "email": "Email",
   "update": "Mettre à jour",
   "downloads": "Téléchargements",
-  "stats": "Stats"
+  "stats": "Stats",
+  "users": "Utilisateurs",
+  "usersConnected": "Utilisateurs connectés",
+  "usersDisconnected": "Utilisateurs déconnectés"
 }
