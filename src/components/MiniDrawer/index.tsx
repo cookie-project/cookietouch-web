@@ -122,7 +122,7 @@ const MiniDrawer: FC = () => {
   }
 
   return (
-    <div>
+    <>
       {!state.firebase.user ? (
         <Redirect to="/" />
       ) : (
@@ -241,7 +241,7 @@ const MiniDrawer: FC = () => {
           </main>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
