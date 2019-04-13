@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import classNames from 'classnames';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -23,9 +23,9 @@ import { useOvermind } from '../../overmind';
 import Stats from '../Stats';
 import Dashboard from '../Dashboard';
 import Downloads from '../Downloads';
-import Lang from '../../utils/lang';
 import { Redirect } from 'react-router-dom';
 import LangSelect from '../LangSelect';
+import { useTranslation } from 'react-i18next';
 
 const drawerWidth = 240;
 
@@ -101,11 +101,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-function MiniDrawer() {
+const MiniDrawer: FC = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const theme = useTheme<Theme>();
-  const [open, setOpen] = React.useState(false);
-  const [page, setPage] = React.useState(0);
+  const [open, setOpen] = useState(false);
+  const [page, setPage] = useState(0);
   const { state, effects } = useOvermind();
 
   const changePage = (page: number) => () => {
@@ -132,14 +133,13 @@ function MiniDrawer() {
           >
             <Toolbar disableGutters={!open}>
               <IconButton
-                color="inherit"
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
                 className={classNames(classes.menuButton, open && classes.hide)}
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit" noWrap={true}>
+              <Typography variant="h6" noWrap={true}>
                 CookieTouch
               </Typography>
               <div className={classes.langSelect}>
@@ -176,7 +176,7 @@ function MiniDrawer() {
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary={Lang.go('home')} />
+                <ListItemText primary={t('home')} />
               </ListItem>
               <ListItem
                 className={classNames(page === 1 && classes.currentTab)}
@@ -186,7 +186,7 @@ function MiniDrawer() {
                 <ListItemIcon>
                   <DownloadIcon />
                 </ListItemIcon>
-                <ListItemText primary={Lang.go('downloads')} />
+                <ListItemText primary={t('downloads')} />
               </ListItem>
               <ListItem
                 className={classNames(page === 2 && classes.currentTab)}
@@ -196,24 +196,24 @@ function MiniDrawer() {
                 <ListItemIcon>
                   <BubbleChartIcon />
                 </ListItemIcon>
-                <ListItemText primary={Lang.go('stats')} />
+                <ListItemText primary={t('stats')} />
               </ListItem>
               <ListItem button={true} onClick={effects.firebase.signout}>
                 <ListItemIcon>
                   <ExitToAppIcon />
                 </ListItemIcon>
-                <ListItemText primary={Lang.go('signout')} />
+                <ListItemText primary={t('signout')} />
               </ListItem>
             </List>
           </Drawer>
           <main className={classes.content}>
             <div className={classes.toolbar} />
             {state.firebase.user.emailVerified ? (
-              <div>
+              <>
                 {page === 0 && <Dashboard />}
                 {page === 1 && <Downloads />}
                 {page === 2 && <Stats />}
-              </div>
+              </>
             ) : (
               <Dashboard />
             )}
@@ -222,6 +222,6 @@ function MiniDrawer() {
       )}
     </div>
   );
-}
+};
 
 export default MiniDrawer;

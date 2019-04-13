@@ -1,5 +1,4 @@
-import React, { FC, useState } from 'react';
-import Lang, { Languages } from '../../utils/lang';
+import React, { FC } from 'react';
 import { FormControl, Select, MenuItem, Theme } from '@material-ui/core';
 import de from './flags/de.png';
 import es from './flags/es.png';
@@ -8,6 +7,16 @@ import it from './flags/it.png';
 import pt from './flags/pt.png';
 import us from './flags/us.png';
 import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
+
+const langsImages: Record<string, string> = {
+  fr: fr,
+  de: de,
+  it: it,
+  pt: pt,
+  en: us,
+  es: es
+};
 
 const useStyles = makeStyles((theme: Theme) => ({
   formControl: {
@@ -21,11 +30,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const LangSelect: FC = () => {
   const classes = useStyles();
-  const [lang, setLang] = useState(Lang.lang);
+  const { i18n } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const lang = event.target.value as Languages;
-    setLang(lang);
+    const lang = event.target.value;
+    i18n.changeLanguage(lang);
   };
 
   return (
@@ -33,31 +42,18 @@ const LangSelect: FC = () => {
       <FormControl className={classes.formControl}>
         {/*<InputLabel htmlFor="lang-simple">LANG</InputLabel>*/}
         <Select
-          value={lang}
+          value={i18n.language}
           onChange={handleChange}
           inputProps={{
             id: 'lang-simple',
             name: 'lang'
           }}
         >
-          <MenuItem value={Languages.FRENCH}>
-            <img src={fr} />
-          </MenuItem>
-          <MenuItem value={Languages.ENGLISH}>
-            <img src={us} />
-          </MenuItem>
-          <MenuItem value={Languages.SPANISH}>
-            <img src={es} />
-          </MenuItem>
-          <MenuItem value={Languages.DEUTSCH}>
-            <img src={de} />
-          </MenuItem>
-          <MenuItem value={Languages.PORTUGUESE}>
-            <img src={pt} />
-          </MenuItem>
-          <MenuItem value={Languages.ITALIAN}>
-            <img src={it} />
-          </MenuItem>
+          {i18n.languages.map(l => (
+            <MenuItem key={l} value={l}>
+              <img src={langsImages[l]} />
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

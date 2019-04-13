@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useOvermind } from '../../overmind';
 import { Paper, Typography, Button, Grid, TextField } from '@material-ui/core';
-import Lang from '../../utils/lang';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 const Dashboard: FC = () => {
   const classes = useStyles();
   const { state } = useOvermind();
+  const { t } = useTranslation();
   const [email, setEmail] = useState(
     (state.firebase.user && state.firebase.user.email) || ''
   );
@@ -86,17 +87,15 @@ const Dashboard: FC = () => {
             padding: 20
           }}
         >
-          <Typography variant="headline">
-            {Lang.go('activateTitle', name)}
-          </Typography>
-          <Typography variant="body1">{Lang.go('activateMessage')}</Typography>
+          <Typography variant="headline">{t('activateTitle', name)}</Typography>
+          <Typography variant="body1">{t('activateMessage')}</Typography>
           <Button
             style={{ marginTop: 20 }}
             variant="contained"
             color="primary"
             onClick={sendActivationEmail(state.firebase.user)}
           >
-            {Lang.go('sendActivationEmail')}
+            {t('sendActivationEmail')}
           </Button>
         </Paper>
       )}
@@ -110,7 +109,7 @@ const Dashboard: FC = () => {
                   margin="dense"
                   id="name"
                   name="name"
-                  label={Lang.go('name')}
+                  label={t('name')}
                   value={name ? name : ''}
                   fullWidth={true}
                   onChange={updateName}
@@ -122,7 +121,7 @@ const Dashboard: FC = () => {
                   margin="dense"
                   id="email"
                   name="email"
-                  label={Lang.go('email')}
+                  label={t('email')}
                   value={email ? email : ''}
                   fullWidth={true}
                   onChange={updateEmail}
@@ -135,7 +134,7 @@ const Dashboard: FC = () => {
                   variant="contained"
                   onClick={updateProfile}
                 >
-                  {Lang.go('update')}
+                  {t('update')}
                 </Button>
                 {errorProfile !== '' && (
                   <Typography variant="body1" style={{ color: 'red' }}>
@@ -151,7 +150,7 @@ const Dashboard: FC = () => {
                   margin="dense"
                   id="password"
                   name="password"
-                  label={Lang.go('password')}
+                  label={t('password')}
                   value={password ? password : ''}
                   fullWidth={true}
                   onChange={updatePassword}
@@ -164,7 +163,7 @@ const Dashboard: FC = () => {
                   variant="contained"
                   onClick={sendUpdatePassword}
                 >
-                  {Lang.go('update')}
+                  {t('update')}
                 </Button>
                 {errorPassword !== '' && (
                   <Typography variant="body1" style={{ color: 'red' }}>
@@ -186,6 +185,17 @@ const Dashboard: FC = () => {
             // allowTransparency={true}
             frameBorder="0"
           />
+        </Grid>
+        <Grid item md={12}>
+          <div>
+            <a
+              className="donate-with-crypto"
+              href="https://commerce.coinbase.com/checkout/ecfce59a-cf8e-426d-a1cf-50e5e7170e8b"
+            >
+              <span>Donate with Crypto</span>
+            </a>
+            <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807" />
+          </div>
         </Grid>
       </Grid>
     </div>

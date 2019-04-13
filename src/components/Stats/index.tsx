@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useConnectedUsers } from '../../hooks/useConnectedUsers';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +15,9 @@ const Stats: FC = () => {
 
   return (
     <div className={classes.root}>
-      {usersConnected} / {totalUsers}
+      <Typography>
+        {usersConnected} / {totalUsers}
+      </Typography>
     </div>
   );
 };

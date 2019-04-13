@@ -18,9 +18,9 @@ import { Redirect } from 'react-router';
 import LangSelect from '../LangSelect';
 import { useOvermind } from '../../overmind';
 import icon from './icon.png';
-import Lang from '../../utils/lang';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { useTranslation } from 'react-i18next';
 
 const logoSize = 150;
 
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Home: FC = () => {
   const classes = useStyles();
   const { state, effects } = useOvermind();
+  const { t } = useTranslation();
 
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -82,11 +83,11 @@ const Home: FC = () => {
     } catch (error) {
       switch (error.code) {
         case 'auth/invalid-email': {
-          setError(Lang.go('invalidEmail'));
+          setError(t('invalidEmail'));
           return;
         }
         case 'auth/wrong-password': {
-          setError(Lang.go('wrongPassword'));
+          setError(t('wrongPassword'));
           return;
         }
         default:
@@ -135,9 +136,7 @@ const Home: FC = () => {
                   />
                 </FormControl>
                 <FormControl fullWidth={true} className={classes.formControl}>
-                  <InputLabel htmlFor="password">
-                    {Lang.go('password')}
-                  </InputLabel>
+                  <InputLabel htmlFor="password">{t('password')}</InputLabel>
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
@@ -169,13 +168,13 @@ const Home: FC = () => {
                   variant="caption"
                   style={{ marginTop: 20 }}
                 >
-                  {Lang.go('signinInfos')}
+                  {t('signinInfos')}
                 </Typography>
               </CardContent>
               <CardActions>
                 <Grid container={true} spacing={0} justify="space-around">
                   <Button size="small" variant="contained" onClick={signin}>
-                    {Lang.go('signin')}
+                    {t('signin')}
                   </Button>
                 </Grid>
               </CardActions>
