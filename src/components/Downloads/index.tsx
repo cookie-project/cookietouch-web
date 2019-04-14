@@ -12,6 +12,8 @@ import {
   Grid,
   Link
 } from '@material-ui/core';
+import LinkIcon from '@material-ui/icons/Link';
+import DownloadIcon from '@material-ui/icons/CloudDownload';
 import { useOvermind } from '../../overmind';
 import { useTranslation } from 'react-i18next';
 
@@ -71,8 +73,12 @@ const Downloads: FC = () => {
             <TableHead>
               <TableRow>
                 <TableCell>{t('name')}</TableCell>
-                <TableCell align="right">{t('downloads')}</TableCell>
-                <TableCell align="right">{t('links')}</TableCell>
+                <TableCell align="right">
+                  <DownloadIcon />
+                </TableCell>
+                <TableCell align="right">
+                  <LinkIcon />
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
