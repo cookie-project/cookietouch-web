@@ -1,5 +1,4 @@
 import { Action } from 'overmind';
-
-export const exampleAction: Action = async () => {
+export const globalConfig: Action = async () => {
   //
 };

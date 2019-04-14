@@ -15,6 +15,11 @@
   "downloads": "Downloads",
   "stats": "Stats",
   "users": "Users",
-  "usersConnected": "Connected users",
-  "usersDisconnected": "Disconnected users"
+  "usersConnected": "Connected users ({{usersConnected}})",
+  "usersDisconnected": "Disconnected users ({{usersDisconnected}})",
+  "assets": "Assets",
+  "link": "Link",
+  "links": "Links",
+  "configs": "Configs",
+  "soonAvalaible": "Available soon!"
 }

@@ -14,6 +14,7 @@ const Stats: FC = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [usersConnected, totalUsers] = useConnectedUsers();
+  const usersDisconnected = totalUsers - usersConnected;
 
   return (
     <div className={classes.root}>
@@ -24,8 +25,8 @@ const Stats: FC = () => {
         loader={<div>Loading Chart</div>}
         data={[
           ['Users', '#'],
-          [t('usersConnected'), usersConnected],
-          [t('usersDisconnected'), totalUsers - usersConnected]
+          [t('usersConnected', { usersConnected }), usersConnected],
+          [t('usersDisconnected', { usersDisconnected }), usersDisconnected]
         ]}
         options={{
           title: `${t('users')} (${totalUsers})`,

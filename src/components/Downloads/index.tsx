@@ -28,7 +28,7 @@ const Downloads: FC = () => {
   const classes = useStyles();
   const { state } = useOvermind();
   const [release, setRelease] = useState(state.github.releases[0]);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newRelease = state.github.releases.find(
@@ -66,13 +66,13 @@ const Downloads: FC = () => {
           />
         </Grid>
         <Grid item md={6}>
-          <Typography variant="h6">Assets</Typography>
+          <Typography variant="h6">{t('assets')}</Typography>
           <Table className={classes.table} padding="dense">
             <TableHead>
               <TableRow>
-                <TableCell>Nom</TableCell>
-                <TableCell align="right">Téléchargements</TableCell>
-                <TableCell align="right">Liens</TableCell>
+                <TableCell>{t('name')}</TableCell>
+                <TableCell align="right">{t('downloads')}</TableCell>
+                <TableCell align="right">{t('links')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -84,7 +84,7 @@ const Downloads: FC = () => {
                   <TableCell align="right">{a.download_count}</TableCell>
                   <TableCell align="right">
                     <Link variant="button" href={a.browser_download_url}>
-                      Lien
+                      {t('link')}
                     </Link>
                   </TableCell>
                 </TableRow>

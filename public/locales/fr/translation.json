@@ -16,5 +16,10 @@
   "stats": "Stats",
   "users": "Utilisateurs",
   "usersConnected": "Utilisateurs connectés",
-  "usersDisconnected": "Utilisateurs déconnectés"
+  "usersDisconnected": "Utilisateurs déconnectés",
+  "assets": "Fichiers",
+  "link": "Lien",
+  "links": "Liens",
+  "configs": "Configs",
+  "soonAvalaible": "Bientôt disponible!"
 }

@@ -14,6 +14,7 @@ const Dashboard: FC = () => {
   const classes = useStyles();
   const { state } = useOvermind();
   const { t } = useTranslation();
+
   const [email, setEmail] = useState(
     (state.firebase.user && state.firebase.user.email) || ''
   );

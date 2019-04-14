@@ -9,15 +9,6 @@ import us from './flags/us.png';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
 
-const langsImages: Record<string, string> = {
-  fr: fr,
-  de: de,
-  it: it,
-  pt: pt,
-  en: us,
-  es: es
-};
-
 const useStyles = makeStyles((theme: Theme) => ({
   formControl: {
     margin: theme.spacing.unit
@@ -44,11 +35,24 @@ const LangSelect: FC = () => {
       <FormControl className={classes.formControl}>
         {/*<InputLabel htmlFor="lang-simple">LANG</InputLabel>*/}
         <Select value={i18n.language} onChange={handleChange}>
-          {i18n.languages.map(l => (
-            <MenuItem key={l} value={l}>
-              <img src={langsImages[l]} />
-            </MenuItem>
-          ))}
+          <MenuItem value="fr">
+            <img src={fr} />
+          </MenuItem>
+          <MenuItem value="en">
+            <img src={us} />
+          </MenuItem>
+          <MenuItem value="de">
+            <img src={de} />
+          </MenuItem>
+          <MenuItem value="es">
+            <img src={es} />
+          </MenuItem>
+          <MenuItem value="pt">
+            <img src={pt} />
+          </MenuItem>
+          <MenuItem value="it">
+            <img src={it} />
+          </MenuItem>
         </Select>
       </FormControl>
     </div>

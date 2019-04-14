@@ -17,6 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SettingsIcon from '@material-ui/icons/Settings';
 import HomeIcon from '@material-ui/icons/Home';
 import { Theme, Link } from '@material-ui/core';
 import { useOvermind } from '../../overmind';
@@ -26,6 +27,7 @@ import Downloads from '../Downloads';
 import { Redirect } from 'react-router-dom';
 import LangSelect from '../LangSelect';
 import { useTranslation } from 'react-i18next';
+import Configs from '../Configs';
 
 const drawerWidth = 240;
 
@@ -201,6 +203,16 @@ const MiniDrawer: FC = () => {
                 <ListItemText primary={t('home')} />
               </ListItem>
               <ListItem
+                className={classNames(page === 3 && classes.currentTab)}
+                button={true}
+                onClick={changePage(3)}
+              >
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('configs')} />
+              </ListItem>
+              <ListItem
                 className={classNames(page === 1 && classes.currentTab)}
                 button={true}
                 onClick={changePage(1)}
@@ -233,6 +245,7 @@ const MiniDrawer: FC = () => {
             {state.firebase.user.emailVerified ? (
               <>
                 {page === 0 && <Dashboard />}
+                {page === 3 && <Configs />}
                 {page === 1 && <Downloads />}
                 {page === 2 && <Stats />}
               </>
