@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'hidden',
     position: 'relative',
     zIndex: 1,
-    height: '100%'
+    minHeight: '100%'
   },
   toolbar: {
     alignItems: 'center',
