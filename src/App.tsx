@@ -1,6 +1,7 @@
 import React, { FC, Suspense } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import { Route, BrowserRouter } from 'react-router-dom';
 import MiniDrawer from './components/MiniDrawer';
 import Home from './components/Home';
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 const App: FC = () => {
   const classes = useStyles();
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
         <Suspense fallback="Loading...">
@@ -36,7 +37,7 @@ const App: FC = () => {
           </div>
         </Suspense>
       </BrowserRouter>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 
