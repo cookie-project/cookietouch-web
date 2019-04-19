@@ -16,6 +16,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import { useOvermind } from '../../overmind';
 import { useTranslation } from 'react-i18next';
+import ReactMarkdown from 'react-markdown';
 
 const useStyles = makeStyles({
   root: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles({
   },
   table: {
     minWidth: 700
+  },
+  md: {
+    color: 'white'
   }
 });
 
@@ -60,12 +64,7 @@ const Downloads: FC = () => {
           <Typography variant="h6">
             {new Date(release.published_at).toLocaleString()}
           </Typography>
-          <Typography
-            paragraph
-            dangerouslySetInnerHTML={{
-              __html: release.body.replace(/\r\n/g, '<br />')
-            }}
-          />
+          <ReactMarkdown className={classes.md} source={release.body} />
         </Grid>
         <Grid item md={6}>
           <Typography variant="h6">{t('assets')}</Typography>

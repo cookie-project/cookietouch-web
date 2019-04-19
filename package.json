@@ -38,6 +38,7 @@
     "react-dom": "^16.8.6",
     "react-google-charts": "^3.0.11",
     "react-i18next": "^10.8.1",
+    "react-markdown": "^4.0.8",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "rxfire": "^3.3.11",
