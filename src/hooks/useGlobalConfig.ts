@@ -51,17 +51,15 @@ interface GlobalConfiguration {
 export const useGlobalConfig = (userId: string) => {
   const [config, setConfig] = useState<GlobalConfiguration>();
 
-  if (userId !== '') {
-    useEffect(() => {
-      const sub = docData<GlobalConfiguration>(
-        firebase.firestore().doc(`/users/${userId}/config/global`)
-      ).subscribe(setConfig);
+  useEffect(() => {
+    const sub = docData<GlobalConfiguration>(
+      firebase.firestore().doc(`/users/${userId}/config/global`)
+    ).subscribe(setConfig);
 
-      return () => {
-        sub.unsubscribe();
-      };
-    }, [userId]);
-  }
+    return () => {
+      sub.unsubscribe();
+    };
+  }, [userId]);
 
   return config;
 };

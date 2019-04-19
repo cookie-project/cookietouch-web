@@ -47,7 +47,7 @@ const Downloads: FC = () => {
         <Grid item md={6}>
           <Select value={release.id} onChange={handleChange}>
             {state.github.releases.map(r => (
-              <MenuItem key={r.id} value={r.id}>
+              <MenuItem key={r.id} value={r.id.toString()}>
                 {r.name}
               </MenuItem>
             ))}

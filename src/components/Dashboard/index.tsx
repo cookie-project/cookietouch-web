@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/styles';
 import { useOvermind } from '../../overmind';
 import { Paper, Typography, Button, Grid, TextField } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-// import StatCard from '../mbz/StatCard';
 
 const useStyles = makeStyles({
   root: {
@@ -144,11 +143,6 @@ const Dashboard: FC = () => {
           </Paper>
         </Grid>
         <Grid item={true} md={4} xs={12}>
-          {/* <StatCard
-            title="Taux d'aboutissement"
-            percent="98"
-            desc="10,000 mails aboutis"
-          /> */}
           <Paper style={{ margin: 10, padding: 10 }}>
             <TextField
               autoFocus={true}
