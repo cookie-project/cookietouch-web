@@ -38,10 +38,11 @@ const AccountsSell: FC = () => {
     <div className={classes.root}>
       <Grid container>
       <Paper className={classes.paper} elevation={1}>
-        <Typography variant="h5" component="h3">
+        <Typography variant="h5" component="h5">
         {t("accountsSellDetails", { count: state.github.accounts.count })}
         </Typography>
       </Paper>
+        <div>
         {state.github.accounts.count >= 10 && <Grid item md={4}>
           <Card className={classes.card}>
           <CardContent>
@@ -78,6 +79,7 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>}
+        </div>
       </Grid>
     </div>
   );
