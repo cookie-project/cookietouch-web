@@ -21,5 +21,9 @@
   "link": "Link",
   "configs": "Configs",
   "soonAvalaible": "Available soon!",
-  "accountsSell": "Accounts sales"
+  "accountsSell": "Acounts sales",
+  "accountsSellDetails": "Accounts sales ({{ count }} accounts available)",
+  "buy": "Buy",
+  "account": "Account",
+  "account_plural": "Accounts"
 }
