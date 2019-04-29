@@ -82,7 +82,7 @@ const AccountsSell: FC = () => {
       </Paper>
       <br/><br/>
       <Grid container spacing={32} justify="space-around">
-        <Grid item>
+      {state.github.accounts.count >= 10 && <Grid item>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -93,8 +93,8 @@ const AccountsSell: FC = () => {
             <Button href="https://commerce.coinbase.com/checkout/68a462d6-04c7-4f06-b317-390ec270e410" size="small">{t('buy')}</Button>
           </CardActions>
         </Card>
-        </Grid>
-        <Grid item>
+        </Grid>}
+        {state.github.accounts.count >= 50 &&<Grid item>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -105,8 +105,8 @@ const AccountsSell: FC = () => {
             <Button href="https://commerce.coinbase.com/checkout/c24cd51b-1c2d-405d-9218-fca2648c7c9a" size="small">{t('buy')}</Button>
           </CardActions>
         </Card>
-        </Grid>
-        <Grid item>
+        </Grid>}
+        {state.github.accounts.count >= 100 &&<Grid item>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -117,7 +117,7 @@ const AccountsSell: FC = () => {
             <Button href="https://commerce.coinbase.com/checkout/758baa93-29b8-42f7-833a-43c6881f191f" size="small">{t('buy')}</Button>
           </CardActions>
         </Card>
-        </Grid>
+        </Grid>}
       </Grid>
     </div>
   );
