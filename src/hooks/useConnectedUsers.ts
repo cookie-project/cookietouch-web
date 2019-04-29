@@ -29,7 +29,7 @@ export const useConnectedUsers = () => {
     return () => {
       sub.unsubscribe();
     };
-  }, []);
+  }, [listRef]);
 
   return [usersConnected, totalUsers];
 };

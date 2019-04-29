@@ -36,22 +36,22 @@ const LangSelect: FC = () => {
         {/*<InputLabel htmlFor="lang-simple">LANG</InputLabel>*/}
         <Select value={i18n.language} onChange={handleChange}>
           <MenuItem value="fr">
-            <img src={fr} />
+            <img alt="fr" src={fr} />
           </MenuItem>
           <MenuItem value="en">
-            <img src={us} />
+            <img alt="en" src={us} />
           </MenuItem>
           <MenuItem value="de">
-            <img src={de} />
+            <img alt="de" src={de} />
           </MenuItem>
           <MenuItem value="es">
-            <img src={es} />
+            <img alt="es" src={es} />
           </MenuItem>
           <MenuItem value="pt">
-            <img src={pt} />
+            <img alt="pt" src={pt} />
           </MenuItem>
           <MenuItem value="it">
-            <img src={it} />
+            <img alt="it" src={it} />
           </MenuItem>
         </Select>
       </FormControl>

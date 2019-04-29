@@ -1,4 +1,4 @@
-import { GithubRelease } from './state';
+import { GithubRelease, Accounts } from './state';
 
 export const getReleases = async (): Promise<GithubRelease[]> => {
   const data = await fetch(
@@ -7,11 +7,11 @@ export const getReleases = async (): Promise<GithubRelease[]> => {
   return data.json();
 };
 
-export const getAccounts = async (): Promise<string> => {
+export const getAccounts = async (): Promise<Accounts> => {
   const data = await fetch(
     'https://cookie-project.com:2121/accounts', {
       mode: "no-cors"
     }
   );
-  return data.text();
+  return data.json();
 };

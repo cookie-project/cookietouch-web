@@ -35,12 +35,18 @@ export interface GithubRelease {
   body: string;
 }
 
+export interface Accounts {
+  count: number;
+}
+
 export interface State {
   releases: GithubRelease[];
-  accounts: number;
+  accounts: Accounts;
 }
 
 export const state: State = {
   releases: [],
-  accounts: 0
+  accounts: {
+    count: 0
+  }
 };

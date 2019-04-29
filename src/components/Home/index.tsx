@@ -114,7 +114,7 @@ const Home: FC = () => {
             <LangSelect />
           </div>
           <Grid item={true} xs={'auto'} md={3}>
-            <img className={classes.logo} src={icon} />
+            <img alt="logo" className={classes.logo} src={icon} />
             <Card className={classes.card}>
               <CardContent>
                 <Typography
