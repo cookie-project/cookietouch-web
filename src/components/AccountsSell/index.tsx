@@ -41,6 +41,7 @@ const AccountsSell: FC = () => {
         {t("accountsSellDetails", { count: state.github.accounts.count })}
         </Typography>
       </Paper>
+      <br/><br/>
       <Grid container>
         <div>
         {state.github.accounts.count >= 10 && <Grid item md={4}>
