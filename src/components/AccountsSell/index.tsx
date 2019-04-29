@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
-import { Grid, Link, Typography, Card, CardContent, CardActions, Button } from '@material-ui/core';
+import { Grid, Typography, Card, CardContent, CardActions, Button, Theme, Paper } from '@material-ui/core';
 import { useOvermind } from '../../overmind';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1
   },
@@ -13,8 +13,13 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 14,
-  }
-});
+  },
+  paper: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+  },
+}));
 
 const AccountsSell: FC = () => {
   const classes = useStyles();
@@ -32,8 +37,11 @@ const AccountsSell: FC = () => {
   return (
     <div className={classes.root}>
       <Grid container>
-        <Typography variant="h5">{t("accountsSellDetails", { count: state.github.accounts.count })}</Typography>
-        <br/><br/><br/><br/>
+      <Paper className={classes.paper} elevation={1}>
+        <Typography variant="h5" component="h3">
+        {t("accountsSellDetails", { count: state.github.accounts.count })}
+        </Typography>
+      </Paper>
         {state.github.accounts.count >= 10 && <Grid item md={4}>
           <Card className={classes.card}>
           <CardContent>
