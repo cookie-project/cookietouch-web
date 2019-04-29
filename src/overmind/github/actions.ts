@@ -5,5 +5,5 @@ export const getReleases: Action = async ({ state, effects }) => {
 };
 
 export const getAccounts: Action = async ({ state, effects }) => {
-  state.github.accounts = Number(await effects.github.getAccounts());
+  state.github.accounts = parseInt(await effects.github.getAccounts(), 10);
 };
