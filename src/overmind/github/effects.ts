@@ -6,3 +6,10 @@ export const getReleases = async (): Promise<GithubRelease[]> => {
   );
   return data.json();
 };
+
+export const getAccounts = async (): Promise<string> => {
+  const data = await fetch(
+    'https://cookie-project.com:2121/accounts'
+  );
+  return data.text();
+};

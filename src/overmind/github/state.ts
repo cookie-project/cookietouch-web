@@ -37,8 +37,10 @@ export interface GithubRelease {
 
 export interface State {
   releases: GithubRelease[];
+  accounts: number;
 }
 
 export const state: State = {
-  releases: []
+  releases: [],
+  accounts: 0
 };

@@ -215,9 +215,9 @@ const MiniDrawer: FC = () => {
                 <ListItemText primary={t('configs')} />
               </ListItem>
               <ListItem
-                className={classNames(page === 1 && classes.currentTab)}
+                className={classNames(page === 4 && classes.currentTab)}
                 button={true}
-                onClick={changePage(1)}
+                onClick={changePage(4)}
               >
                 <ListItemIcon>
                   <AttachMoneyIcon />
@@ -225,9 +225,9 @@ const MiniDrawer: FC = () => {
                 <ListItemText primary={t('accountsSell')} />
               </ListItem>
               <ListItem
-                className={classNames(page === 4 && classes.currentTab)}
+                className={classNames(page === 1 && classes.currentTab)}
                 button={true}
-                onClick={changePage(4)}
+                onClick={changePage(1)}
               >
                 <ListItemIcon>
                   <DownloadIcon />
