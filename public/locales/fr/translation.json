@@ -24,6 +24,6 @@
   "accountsSell": "Vente de comptes",
   "accountsSellDetails": "Vente de comptes ({{ count }} comptes disponibles)",
   "buy": "Acheter",
-  "account": "Compte",
-  "account_plural": "Comptes"
+  "account": "{{ count }} Compte",
+  "account_plural": "{{ count }} Comptes"
 }

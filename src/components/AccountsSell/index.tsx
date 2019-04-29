@@ -13,9 +13,6 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   }
 });
 
@@ -37,11 +34,11 @@ const AccountsSell: FC = () => {
       <Grid container>
         <Typography variant="h3">{t("accountsSellDetails", { count: state.github.accounts.count })}</Typography>
         <br/><br/>
-        {state.github.accounts.count >= 10 && <Grid item md={6}>
+        {state.github.accounts.count >= 10 && <Grid item md={4}>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
-              {t('account', { count: 10 })}
+              {t('account', { count: 10 })} 3€
             </Typography>
           </CardContent>
           <CardActions>
@@ -49,11 +46,11 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>}
-        {state.github.accounts.count >= 50 && <Grid item md={6}>
+        {state.github.accounts.count >= 50 && <Grid item md={4}>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
-              {t('account', { count: 50 })}
+              {t('account', { count: 50 })} 13.50€
             </Typography>
           </CardContent>
           <CardActions>
@@ -61,11 +58,11 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>}
-        {state.github.accounts.count >= 100 && <Grid item md={6}>
+        {state.github.accounts.count >= 100 && <Grid item md={4}>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
-              {t('account', { count: 100 })}
+              {t('account', { count: 100 })} 25€
             </Typography>
           </CardContent>
           <CardActions>

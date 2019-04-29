@@ -24,6 +24,6 @@
   "accountsSell": "Acounts sales",
   "accountsSellDetails": "Accounts sales ({{ count }} accounts available)",
   "buy": "Buy",
-  "account": "Account",
-  "account_plural": "Accounts"
+  "account": "{{ count }} Account",
+  "account_plural": "{{ count }} Accounts"
 }
