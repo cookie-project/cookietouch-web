@@ -17,7 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MoneyIcon from '@material-ui/icons/Money';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
 import HomeIcon from '@material-ui/icons/Home';
 import { Theme, Link } from '@material-ui/core';
@@ -220,7 +220,7 @@ const MiniDrawer: FC = () => {
                 onClick={changePage(1)}
               >
                 <ListItemIcon>
-                  <DownloadIcon />
+                  <AttachMoneyIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('accountsSell')} />
               </ListItem>
@@ -230,7 +230,7 @@ const MiniDrawer: FC = () => {
                 onClick={changePage(4)}
               >
                 <ListItemIcon>
-                  <MoneyIcon />
+                  <DownloadIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('downloads')} />
               </ListItem>
