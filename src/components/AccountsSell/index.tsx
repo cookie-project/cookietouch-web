@@ -34,6 +34,45 @@ const AccountsSell: FC = () => {
     actions.github.getAccounts()
   }
 
+  /*
+  {state.github.accounts.count >= 10 && <Grid item md={4}>
+          <Card className={classes.card}>
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              {t('account', { count: 10 })} 3€
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button href="https://commerce.coinbase.com/checkout/68a462d6-04c7-4f06-b317-390ec270e410" size="small">{t('buy')}</Button>
+          </CardActions>
+        </Card>
+        </Grid>}
+        {state.github.accounts.count >= 50 && <Grid item md={4}>
+          <Card className={classes.card}>
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              {t('account', { count: 50 })} 13.50€
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button href="https://commerce.coinbase.com/checkout/c24cd51b-1c2d-405d-9218-fca2648c7c9a" size="small">{t('buy')}</Button>
+          </CardActions>
+        </Card>
+        </Grid>}
+        {state.github.accounts.count >= 100 && <Grid item md={4}>
+          <Card className={classes.card}>
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              {t('account', { count: 100 })} 25€
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button href="https://commerce.coinbase.com/checkout/758baa93-29b8-42f7-833a-43c6881f191f" size="small">{t('buy')}</Button>
+          </CardActions>
+        </Card>
+        </Grid>}
+   */
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={1}>
@@ -42,9 +81,9 @@ const AccountsSell: FC = () => {
         </Typography>
       </Paper>
       <br/><br/>
-      <Grid container>
+      <Grid container spacing={32}>
         <div>
-        <Grid item md={4}>
+        <Grid item md={4} xs={6} lg={4}>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -56,7 +95,7 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={4} xs={6} lg={4}>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -68,7 +107,7 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={4} xs={6} lg={4}>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
