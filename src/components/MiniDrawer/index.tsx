@@ -17,6 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import MoneyIcon from '@material-ui/icons/Money';
 import SettingsIcon from '@material-ui/icons/Settings';
 import HomeIcon from '@material-ui/icons/Home';
 import { Theme, Link } from '@material-ui/core';
@@ -28,6 +29,7 @@ import { Redirect } from 'react-router-dom';
 import LangSelect from '../LangSelect';
 import { useTranslation } from 'react-i18next';
 import Configs from '../Configs';
+import AccountsSell from '../AccountsSell';
 
 const drawerWidth = 240;
 
@@ -220,6 +222,16 @@ const MiniDrawer: FC = () => {
                 <ListItemIcon>
                   <DownloadIcon />
                 </ListItemIcon>
+                <ListItemText primary={t('accountsSell')} />
+              </ListItem>
+              <ListItem
+                className={classNames(page === 4 && classes.currentTab)}
+                button={true}
+                onClick={changePage(4)}
+              >
+                <ListItemIcon>
+                  <MoneyIcon />
+                </ListItemIcon>
                 <ListItemText primary={t('downloads')} />
               </ListItem>
               <ListItem
@@ -248,6 +260,7 @@ const MiniDrawer: FC = () => {
                 {page === 3 && <Configs />}
                 {page === 1 && <Downloads />}
                 {page === 2 && <Stats />}
+                {page === 4 && <AccountsSell />}
               </>
             ) : (
               <Dashboard />
