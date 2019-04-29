@@ -9,7 +9,9 @@ export const getReleases = async (): Promise<GithubRelease[]> => {
 
 export const getAccounts = async (): Promise<string> => {
   const data = await fetch(
-    'https://cookie-project.com:2121/accounts'
+    'https://cookie-project.com:2121/accounts', {
+      mode: "no-cors"
+    }
   );
   return data.text();
 };
