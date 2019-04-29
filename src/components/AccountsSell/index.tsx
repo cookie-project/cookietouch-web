@@ -26,7 +26,7 @@ const AccountsSell: FC = () => {
   return (
     <div className={classes.root}>
       <Grid container>
-        <Typography variant="display1">{t("accountsSell")}</Typography>
+        <Typography variant="display1">{t("accountsSell")} ({state.github.accounts})</Typography>
         {state.github.accounts >= 10 && <Grid item md={6}>
           <Link onClick={refreshAccounts} href="https://commerce.coinbase.com/checkout/68a462d6-04c7-4f06-b317-390ec270e410">10</Link>
         </Grid>}
