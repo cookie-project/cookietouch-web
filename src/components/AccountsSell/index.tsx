@@ -82,7 +82,6 @@ const AccountsSell: FC = () => {
       </Paper>
       <br/><br/>
       <Grid container spacing={32} justify="space-around">
-        <div>
         <Grid item>
           <Card className={classes.card}>
           <CardContent>
@@ -119,7 +118,6 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>
-        </div>
       </Grid>
     </div>
   );
