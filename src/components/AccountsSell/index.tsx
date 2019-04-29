@@ -81,9 +81,9 @@ const AccountsSell: FC = () => {
         </Typography>
       </Paper>
       <br/><br/>
-      <Grid container spacing={32}>
+      <Grid container spacing={32} justify="space-around">
         <div>
-        <Grid item md={4} xs={6} lg={4}>
+        <Grid item>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -95,7 +95,7 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>
-        <Grid item md={4} xs={6} lg={4}>
+        <Grid item>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -107,7 +107,7 @@ const AccountsSell: FC = () => {
           </CardActions>
         </Card>
         </Grid>
-        <Grid item md={4} xs={6} lg={4}>
+        <Grid item>
           <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>
