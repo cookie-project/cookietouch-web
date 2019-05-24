@@ -5,7 +5,7 @@ import 'firebase/firestore';
 
 export const initialize = () => {
   const config = {
-    apiKey: 'AIzaSyBr9rnJtS7_jFwfHfsbsKHO4U-xAQ--e7k',
+    apiKey: 'AIzaSyA31DU2Wmw7XWDFlZsv1qw5vLtnduoVs_I',
     authDomain: 'cookietouch-52c0c.firebaseapp.com',
     databaseURL: 'https://cookietouch-52c0c.firebaseio.com',
     messagingSenderId: '423749577733',
